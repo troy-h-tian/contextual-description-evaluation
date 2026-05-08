@@ -54,7 +54,7 @@ def main():
     unique_images = df[["img_id", "img_file"]].drop_duplicates(subset="img_file")
     print(f"Found {len(unique_images)} unique images.")
 
-    # Generate one caption per unique image
+    # generate one caption per unique image
     caption_cache = {}
     for _, row in unique_images.iterrows():
         img_file = row["img_file"]
@@ -71,7 +71,7 @@ def main():
         except Exception as e:
             print(f"  ERROR: {e}")
 
-    # For each image-context pair, compute scores
+    # for each image-context pair, compute scores
     results = []
     seen = set()
     for _, row in df.iterrows():
