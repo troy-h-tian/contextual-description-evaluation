@@ -7,13 +7,18 @@ from scipy import stats
 from transformers import pipeline
 from bert_score import score as bert_score
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 
 IMAGES_DIR  = "metrics/clipscore/cosid_data/cosid_images"
 DESC_CSV    = "behavioral_data/all_descriptions.csv"
 SIGHTED_CSV = "behavioral_data/sighted_data_criticaltrials.csv"
 BLV_CSV     = "behavioral_data/blv_data_criticaltrials.csv"
 OUTPUT_CSV  = "results_human_v3.csv"
-OPENAI_KEY  = "REDACTED"
 
 clip_model = preprocess = sbert = nli = client = None
 

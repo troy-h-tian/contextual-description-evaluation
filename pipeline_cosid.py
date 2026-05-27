@@ -2,11 +2,16 @@ import os, base64, torch, clip, pandas as pd
 from openai import OpenAI
 from PIL import Image
 from sentence_transformers import SentenceTransformer, util
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 
 IMAGES_DIR = "metrics/clipscore/cosid_data/cosid_images"
 DESC_CSV   = "behavioral_data/all_descriptions.csv"
 OUTPUT_CSV = "results_gpt4o.csv"
-OPENAI_KEY = "REDACTED"
 
 client = clip_model = preprocess = sbert = None
 

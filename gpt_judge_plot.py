@@ -3,12 +3,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 
 DESC_CSV    = "behavioral_data/all_descriptions.csv"
 SIGHTED_CSV = "behavioral_data/sighted_data_criticaltrials.csv"
 BLV_CSV     = "behavioral_data/blv_data_criticaltrials.csv"
 OUTPUT_CSV  = "results_gpt_judge.csv"
-OPENAI_KEY  = "REDACTED"
 
 def get_ratings():
     desc_df    = pd.read_csv(DESC_CSV)
