@@ -9,7 +9,7 @@ from scipy import stats
 from bert_score import score as bert_score
 
 sys.path.insert(0, os.path.expanduser('~/TranSalNet'))
-from TranSalNet_Res import TranSalNet
+from TranSalNet_Res import TranSalNet # type: ignore
 
 IMAGES_DIR  = "metrics/clipscore/cosid_data/cosid_images"
 GPT_RESULTS = "results_gpt4o.csv"
