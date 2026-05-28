@@ -282,3 +282,6 @@ TSWLatexianTemp*
 *.lpz
 .env
 *.env
+yolov8x-oiv7.pt
+yolo11n.pt
+*.pt
