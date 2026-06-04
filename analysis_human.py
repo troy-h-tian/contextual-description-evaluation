@@ -112,6 +112,7 @@ def main():
                          lang="en", model_type="distilbert-base-uncased",
                          verbose=False)
     merged["bertscore_f"] = F.tolist()
+    merged["bertscore_r"] = R.tolist()
 
     merged.to_csv(OUTPUT_CSV, index=False)
     print(f"Saved to {OUTPUT_CSV}")

@@ -6,7 +6,7 @@ from scipy import stats
 df = pd.read_csv("results_human_v2.csv")
 
 plot_df = df.dropna(subset=[
-    "bertscore_f",
+    "bertscore_r",
     "sighted_overall", "sighted_relevance",
     "blv_overall", "blv_relevance"
 ])
@@ -17,11 +17,11 @@ ylabels  = ["Sighted Overall", "Sighted Relevance", "BLV Overall", "BLV Relevanc
 colors   = ["#4C72B0", "#4C72B0", "#DD8452", "#DD8452"]
 
 fig, axes = plt.subplots(1, 4, figsize=(20, 5))
-fig.suptitle("BERTScore F1 vs. Human Ratings (Human-Written Descriptions)", fontsize=14, y=1.02)
+fig.suptitle("BERTScore Recall vs. Human Ratings (Human-Written Descriptions)", fontsize=14, y=1.02)
 
 for i, (rating, ylabel, color) in enumerate(zip(ratings, ylabels, colors)):
     ax = axes[i]
-    x  = plot_df["bertscore_f"]
+    x  = plot_df["bertscore_r"]
     y  = plot_df[rating]
 
     pearson_r,  pearson_p  = stats.pearsonr(x, y)
@@ -34,7 +34,7 @@ for i, (rating, ylabel, color) in enumerate(zip(ratings, ylabels, colors)):
     x_line = np.array([x.min(), x.max()])
     ax.plot(x_line, m * x_line + b, color="tomato", linewidth=2)
 
-    ax.set_xlabel("BERTScore F1", fontsize=11)
+    ax.set_xlabel("BERTScore Recall", fontsize=11)
     ax.set_ylabel(ylabel, fontsize=11)
     ax.set_title(
         f"r={pearson_r:.2f} (p={pearson_p:.3f})\n"
@@ -48,5 +48,5 @@ fig.text(0.5, -0.04,
          ha="center", fontsize=10, color="gray")
 
 plt.tight_layout()
-plt.savefig("bertscore_human_ratings.png", dpi=150, bbox_inches="tight")
-print("Saved bertscore_human_ratings.png")
+plt.savefig("bertscore_r_human_ratings.png", dpi=150, bbox_inches="tight")
+print("Saved bertscore_r_human_ratings.png")
